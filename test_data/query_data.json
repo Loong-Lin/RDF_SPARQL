@@ -1,0 +1,7 @@
+{
+  "空": "",
+  "有en.wiki网站链接的国家/地区": "SELECT ?countryLabel ?article WHERE {\n\n    ?country wdt:P31 wd:Q3624078 . # sovereign state\n    ?article schema:about ?country .\n    ?article schema:isPartOf <https://en.wikipedia.org/>.\n\n    SERVICE wikibase:label {\n       bd:serviceParam wikibase:language \"en\"\n    }\n}\nORDER BY DESC(?countryLable) LIMIT 10",
+  "猫": "SELECT ?item ?itemLabel \nWHERE \n{\n  ?item wdt:P31 wd:Q146. # 必须是一只猫\n  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n}\nORDER BY DESC(?countryLable) LIMIT 10",
+  "城市gps": "SELECT DISTINCT ?cityLabel ?population ?gps\nWHERE\n{\n  ?city wdt:P31/wdt:P279* wd:Q515 .\n  ?city wdt:P1082 ?population .\n  ?city wdt:P625 ?gps .\n  SERVICE wikibase:label {\n    bd:serviceParam wikibase:language \"en\" .\n  }\n}\nORDER BY DESC(?population) LIMIT 10",
+  "(local)找nickname": "PREFIX foaf: <http://xmlns.com/foaf/0.1/>\n\n    SELECT ?p ?name\n    WHERE {\n        ?p rdf:type foaf:Person .\n        ?p foaf:nick ?name .\n    }"
+}
